@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+      <div class="jumbotron"  style="opacity:0.7;height: 400px;margin-top: 20px">
+        <h1 align="center" style="margin-bottom: 20px">风格转换美图管理系统</h1>
+        <p><h3>本系统实现图像的风格转换，可以将你上传的图片迁移到一些画作的绘画风格！要预览效果请点击“作品展示”，开始风格转换请点击下面的按钮，进入前请先登录！</h3></p>
+        <p>
+          <div align="center"><a class="btn btn-lg btn-primary" href="{{url_for('image_transfer')}}" role="button"> 点击这里</a></div>
+        </p>
+
+      </div>
+       {% for message in get_flashed_messages(category_filter=["error"]) %}
+             <h3 align="center" style="color:green">{{ message }}</h3>
+         {% endfor %}
+
+{% endblock %}
+
+{% block js_code %}
+    <script>
+    $(document).ready(
+        function () {
+             $("#nav-1").addClass('active')
+        }
+    );
+    </script>
+
+{% endblock %}
+

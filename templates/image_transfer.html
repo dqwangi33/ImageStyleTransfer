@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="maplebg"></div>
+<h1 align="center" class="milky" style="margin-top: 20px;margin-bottom: 20px">图像风格转换</h1>
+
+
+<div align="center">
+    <form action="{{url_for('transform')}}" method="post" enctype="multipart/form-data">
+
+        <div style="width:500px;height:500px;float:left">
+        <h3 style="margin-top:5px;margin-bottom:5px">请选择风格</h3>
+        <select name="style" id="style" onchange="changeImage()">
+            <option>星月夜</option>
+            <option>向日葵</option>
+            <option>金属风</option>
+            <option>阴郁风</option>
+            <option>紫色风</option>
+            <option>水墨画</option>
+            <option>素描画</option>
+            <option>油画</option>
+            <option>海浪</option>
+            <option>秋季田野</option>
+            <option>海上日出</option>
+            <option>sun</option>
+
+            <option>night</option>
+            <option>mountain_vgg16</option>
+            <option>mountain_vgg19</option>
+        </select><br><br>
+
+            <img id='imageShow' src="{{ url_for('static', filename='img/style/denoised_starry.jpg') }}" width="auto"
+                 height="60%">
+        </div>
+
+        <div style="width:500px;height:500px;float:left">
+            <h3 style="margin-top:5px;margin-bottom:5px">请上传图像</h3>
+            <input id="pic"  type="file" name = 'pic' accept = "image/*" onchange = "selectFile()"/>
+
+         <div id = "result"></div>
+
+    <!-- <button onclick = "handIn()">提交</button> -->
+    <script type="text/javascript">
+        //var files = document.getElementById('pic').files;
+        var form = new FormData();//通过HTML表单创建FormData对象
+        var url = '127.0.0.1:8080/'
+        function selectFile(){
+            var files = document.getElementById('pic').files;
+            console.log(files[0]);
+            if(files.length == 0){
+                return;
+            }
+            var file = files[0];
+            //把上传的图片显示出来
+            var reader = new FileReader();
+            // 将文件以Data URL形式进行读入页面
+            console.log(reader);
+            reader.readAsBinaryString(file);
+            reader.onload = function(f){
+                var result = document.getElementById("result");
+                var src = "data:" + file.type + ";base64," + window.btoa(this.result);
+                result.innerHTML = '<img src ="'+src+'"/>';
+            }
+            console.log('file',file);
+            ///////////////////
+            form.append('file',file);
+            console.log(form.get('file'));
+        }
+
+        </script>
+            </div>
+         <div style="float: outside">
+            <input type="submit" value="开始转换" onclick="showStatus()" class="btn btn-primary"  >
+         </div>
+        </form>
+
+    </div>
+
+
+
+
+
+
+
+<div id='status' align="center">
+</div>
+
+{% endblock %}

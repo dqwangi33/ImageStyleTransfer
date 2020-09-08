@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% if "user_name" not in session %}
+    <script>
+        window.location="{{ url_for('user_login') }}"
+    </script>
+    {% endif %}
+    <div class="jumbotron" style="opacity:0.5;height: 180px;margin-top: 20px">
+    <h1 align="center">{{ session.get("user_name") }}的个人中心</h1>
+    </div>
+
+    <div style="opacity:0.9;margin-top: 20px">
+        {% include "menu.html" %}
+
+        <div class="col-md-9">
+            <div class="jumbotron"  style="opacity:0.8;height: 160px;margin-top: 5px">
+                <h2 align="center">欢迎您，{{ session.get("user_name") }}！</h2>
+                <p><h3>在此页面可以修改您的个人信息，并可以查看风格化图像集</h3></p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+{% block js_code %}
+    <script>
+    $(document).ready(
+        function () {
+             $("#nav-2").addClass('active')
+        }
+    );
+    </script>
+{% endblock %}

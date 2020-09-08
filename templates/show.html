@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>作品展示</title>
+<link href="../static/css/lanrenzhijia.css" type="text/css" rel="stylesheet">
+<script src="../static/js/mootools-core.js"></script>
+<script src="../static/js/mediabox.js"></script>
+</head>
+<body style="background-color: #9d9d9d">
+<div style="height:100px; background:#333; line-height:100px; font-size:30px; font-family:'微软雅黑'; color:#FFF; text-align:center"> 风格化作品展示 </div>
+<div style="background-color: #9d9d9d">
+  <!--效果开始-->
+  <div style="margin-left: 60px" class="mod_gallerylist">
+    <div class="layout_default">
+      <p class="info"><span class="date"></span> <span class="author"></span></p>
+      <div class="image_container"> <a href="/static/images/p1.jpg" rel="lightbox[ostec]"> <img src="/static/images/p1.jpg" width="1300px" > </a> </div>
+      <div class="meta"><h2>风格1</h2></div>
+    </div>
+      <div class="layout_default">
+      <p class="info"><span class="date"></span> <span class="author"></span></p>
+      <div class="image_container"> <a href="/static/images/p2.jpg" rel="lightbox[ostec]"> <img src="/static/images/p2.jpg" width="1300px" > </a> </div>
+      <div class="meta"><h2>风格2</h2></div>
+     </div>
+      <div class="layout_default">
+      <p class="info"><span class="date"></span> <span class="author"></span></p>
+      <div class="image_container"> <a href="/static/images/p8.jpg" rel="lightbox[ostec]"> <img src="/static/images/p8.jpg" width="1300px" > </a> </div>
+      <div class="meta"><h2>风格3</h2></div>
+    </div>
+    <div class="layout_default">
+      <p class="info"><span class="date"></span> <span class="author"></span></p>
+      <div class="image_container"> <a href="/static/images/p4.jpg" rel="lightbox[ostec]"> <img src="/static/images/p4.jpg" width="1300px"> </a> </div>
+     <div class="meta"><h2>风格4</h2></div>
+    </div>
+    <div class="layout_default">
+      <p class="info"><span class="date"></span> <span class="author"></span></p>
+      <div class="image_container"> <a href="/static/images/p5.jpg" rel="lightbox[ostec]" > <img src="/static/images/p5.jpg" width="1300px" > </a> </div>
+      <div class="meta"><h2>风格5</h2></div>
+    </div>
+    <div class="layout_default">
+      <p class="info"><span class="date"></span> <span class="author"></span></p>
+      <div class="image_container"> <a href="/static/images/p6.jpg" rel="lightbox[ostec]" > <img src="/static/images/p6.jpg" width="1300px" > </a> </div>
+      <div class="meta"><h2>风格6</h2></div>
+    </div>
+      <div class="layout_default">
+      <p class="info"><span class="date"></span> <span class="author"></span></p>
+      <div class="image_container"> <a href="/static/images/p7.jpg" rel="lightbox[ostec]" > <img src="/static/images/p7.jpg" width="1300px" > </a> </div>
+      <div class="meta"><h2>风格7</h2></div>
+    </div>
+
+  </div>
+
+
+
+
+  <script>
+Mediabox.scanPage = function() {
+  var links = $$("a").filter(function(el) {
+    return el.rel && el.rel.test(/^lightbox/i);
+  });
+  $$(links).mediabox({/* Put custom options here */}, null, function(el) {
+    var rel0 = this.rel.replace(/[[]|]/gi," ");
+    var relsize = rel0.split(" ");
+    return (this == el) || ((this.rel.length > 8) && el.rel.match(relsize[1]));
+  });
+};
+window.addEvent("domready", Mediabox.scanPage);
+</script>
+  <!--End-->
+  <div style="clear:both"></div>
+</div>
+<p><div align="center"><button class="btn btn-lg btn-primary btn-block" ><a href="{{url_for('index')}}" role="button"> 返回主页</a></button>
+    </div></p>
+</body>
+</html>

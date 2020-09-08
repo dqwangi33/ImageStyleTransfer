@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<title>album</title>
+	<link rel="stylesheet" type="text/css" href="csshake-slow.min.css">
+  <link rel="stylesheet" type="text/css" href="http://csshake.surge.sh/csshake-slow.min.css">
+  </head>
+  <body style="background-color:#9d9d9d">
+  <h1 align="center" style=" margin-top:20px;margin-bottom:20px">我的风格化图像集</h1>
+
+  {% for file_url in list %}
+      <img class="shake-slow" src="{{ file_url}}" style="margin-left:15px;margin-top:15px;width:auto;height:220px;">
+  {% endfor %}
+
+    <p><div align="center"><button class="btn btn-lg btn-primary btn-block" ><a href="{{url_for('index')}}" role="button"> 返回主页</a></button>
+    </div></p>
+  </body>
+  </html>
+ 

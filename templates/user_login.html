@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    {% for message in get_flashed_messages(category_filter=["ok"]) %}
+        <h3 align="center" style="color:green">{{ message }}</h3>
+    {% endfor %}
+
+    {% for message in get_flashed_messages(category_filter=["error"]) %}
+        <h3 align="center" style="color:red">{{ message }}</h3>
+    {% endfor %}
+    {% for message in get_flashed_messages(category_filter=["new"]) %}
+        <h3 align="center" style="color:red">{{ message }}</h3>
+    {% endfor %}
+
+   <div class="container"   id="loginPanel" style="position:absolute; top:50%; left:50%; width:400px; height:300px; margin-left:-240px; margin-top:-180px;">
+
+      <form role="form" method="post">
+        <h2 align="center" class="form-signin-heading">用户登录</h2>
+          <div style="margin-top: 10px">
+        <label for="user_name" class="sr-only">用户名</label>
+        <input type="text" id="user_name" name="user_name" class="form-control" placeholder="请输入用户名" required autofocus>
+          </div>
+          <div style="margin-top: 10px">
+        <label for="user_password" class="sr-only">密码</label>
+        <input type="password" id="user_password" name="user_password" class="form-control" placeholder="请输入密码" required><div style="margin-top: 10px">
+          <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember me"> <h4>记住密码</h4>
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+      </form>
+    </div> <!-- /container -->
+{% endblock %}
+
+
+{% block js_code %}
+    <script>
+    $(document).ready(
+        function () {
+             $("#nav-4").addClass('active')
+        }
+    );
+    </script>
+
+{% endblock %}

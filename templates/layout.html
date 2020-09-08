@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>风格转换</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="navbar.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+      <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>图像风格转换</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="signin.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+   <style type="text/css">
+    html,body{ margin:0; padding:0; border:0;}
+    #loginPanel{background-color:#eee;}
+
+    #result{
+            width: auto;
+            height:300px;
+
+        }
+        #result img{
+            width: auto;
+            height: 100%;
+        }
+        input{
+            width: 80px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+</style>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/maple.js"></script>
+
+
+  </head>
+
+  <body style="background: #DECEBE url(../static/img/bg-img.jpg) fixed no-repeat center 0;overflow-x: hidden;overflow-y: hidden;">
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default" style="opacity:0.9;margin-top: 20px">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand"><h2>图像风格转换</h2></a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li id="nav-1"><a href="{{url_for('index')}}"><h3>主页</h3></a></li>
+              <li><a href="{{url_for('show')}}"><h3>作品展示</h3></a></li>
+              <li><a href="{{url_for('my_album')}}"><h3>我的图像集</h3></a></li>
+              <li><a href="{{ url_for('image_uploads') }}"><h3>风格反馈</h3></a></li>
+
+
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if "user_name" in session %}
+              <li id="nav-2"><a href="{{url_for('user_center')}}"><h3>个人中心</h3> </a></li>
+               <li id="nav-3"><a href="{{url_for('user_logout')}}"><h3>退出</h3></a></li>
+                {% else %}
+              <li id="nav-4"><a href="{{url_for('user_login')}}"><h3>登录</h3></a></li>
+              <li id="nav-5"><a href="{{url_for('user_register')}}"><h3>注册</h3></a></li>
+                {% endif %}
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+
+        {% block content %}
+        {% endblock %}
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+    {% block js_code %}
+
+    {% endblock %}
+
+
+  </body>
+</html>
+
+
+
+

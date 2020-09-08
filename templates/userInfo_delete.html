@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% if "user_name" not in session %}
+    <script>
+        window.location="{{ url_for('user_login') }}"
+    </script>
+    {% endif %}
+    <div class="jumbotron" style="opacity:0.5;height: 180px;margin-top: 40px">
+    <h1 align="center">{{ session.get("user_name") }}的个人中心</h1>
+    </div>
+
+    <div style="opacity:0.6;margin-top: 20px">
+        {% include "menu.html" %}
+
+    <div class="col-md-8" style="margin-left: 20px;margin-top: 20px">
+        <div class="jumbotron">
+            <h2 align="center">注销个人账号</h2>
+
+            <div style="margin-top: 10px">
+            <form role="form" method="post">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">确定注销账号？点击确认</button>
+            </div>
+        </div>
+
+          </form>
+    </div>
+
+{% block js_code %}
+    <script>
+    $(document).ready(
+        function () {
+             $("#item-2").addClass('active')
+        }
+    );
+    </script>
+
+{% endblock %}
+
+
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% if "user_name" not in session %}
+    <script>
+        window.location="{{ url_for('user_login') }}"
+    </script>
+    {% endif %}
+    <div class="jumbotron" style="opacity:0.5;height: 180px;margin-top: 40px">
+    <h1 align="center">{{ session.get("user_name") }}的个人中心</h1>
+    </div>
+
+    <div style="opacity:0.6;margin-top: 20px">
+        {% include "menu.html" %}
+
+        <div class="col-md-6" style="margin-left: 100px">
+            <form role="form" method="post">
+
+		 <h2 align="center" class="form-signin-heading">用户信息修改</h2>
+
+		  <div style="margin-top: 10px">
+        <label for="user_name" class="sr-only">请输入用户名</label>
+        <input type="text" id="user_name" name="user_name" class="form-control" value="{{ session.get("user_name") }}" placeholder="请输入用户名" required autofocus>
+          </div>
+
+        <div style="margin-top: 10px">
+            <label for="user_password" class="sr-only">请输入密码</label>
+            <input type="password" id="user_password" name="user_password" class="form-control"  maxlength="16" placeholder="输入密码" required>
+        </div>
+
+        <div style="margin-top: 10px">
+            <label for="user_password2" class="sr-only">请确认密码</label>
+            <input type="password" id="user_password2" name="user_password2" class="form-control" maxlength="16" placeholder="确认密码" required>
+        </div>
+
+        <div style="margin-top: 10px">
+            <label for="email" class="sr-only">请填写邮箱</label>
+            <input type="email" id="email" name="email" class="form-control" value="{{ user.email }}" maxlength="16" placeholder="填写邮箱" required autofocus>
+        </div>
+
+        <div style="margin-top: 10px">
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">确定修改个人信息并提交</button>
+        </div>
+         </ul>
+		</form>
+
+        </div>
+
+    </div>
+
+{% block js_code %}
+    <script>
+    $(document).ready(
+        function () {
+             $("#item-1").addClass('active')
+        }
+    );
+    </script>
+
+{% endblock %}
+
+
+
+{% endblock %}

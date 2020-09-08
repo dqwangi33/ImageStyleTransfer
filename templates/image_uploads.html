@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<h1 align="center">用户风格图反馈</h1>
+<hr style="border:darkblue"/>
+<div align="center">
+        <form role="form" method="post" enctype="multipart/form-data">
+            <input type="file" name="imagefile">
+            <input type="submit" value="上传图片">
+
+        </form>
+</div>
+        {% if file_url %}
+             <h2 align="center">图片上传成功！感谢反馈！</h2>
+         {% else %}
+             <h2 align="center">请反馈给我们新的风格图！</h2>
+        {% endif %}
+        <div align="center">
+        <img  src="{{ file_url }}" height="200px">
+
+        </div>
+
+
+
+
+{% for file_url in list %}
+<img src="{{ file_url }}" height="500px">
+{% endfor %}
+
+
+{% endblock %}
